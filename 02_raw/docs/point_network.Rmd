@@ -1,0 +1,15 @@
+---
+title: "Untitled"
+author: "KS"
+date: "2022-12-23"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 集計方法
+
+ポイ探（https://www.poitan.net/）のポイント間交換データをPythonにてスクレイピング
+
