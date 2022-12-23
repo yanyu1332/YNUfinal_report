@@ -1,4 +1,8 @@
-# library list
+## library list
 library(tidyverse)
-# installing packages list
+library(igraph)
+
+## installing packages list
+
 # install.packages("tidyverse")
+# install.packages("igraph")

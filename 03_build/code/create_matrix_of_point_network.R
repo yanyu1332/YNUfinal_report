@@ -11,7 +11,6 @@ unique_point_orgin <- unique(point_data_raw$origin)
 unique_point_exchange <- unique(point_data_raw$exchange)
 
 unique_point <- unique(append(unique_point_orgin,unique_point_exchange))
-unique_point <- unique_point_orgin
 
 # 行列の1行目を意味するdataframeの作成
 df_col_1 <- data.frame(unique_point)
@@ -20,7 +19,6 @@ df_col_1 <- data.frame(unique_point)
 ## 個々のpointのdataframeを作成
 
 # 個々のdataframeを作成
-length(unique_point)
 df_temporary <- data.frame(unique_point)
 for (i in 1:length(unique_point)) {
   df_indvisual <- point_data_raw[point_data_raw$origin == unique_point[i],] %>%
@@ -44,4 +42,4 @@ df <- subset(df, point != "None") %>%
 
 ## --------------------------------------------------
 # CSV形式でエクスポート
-write.csv(x = df, file = "03_build/output/matrix_of_point.csv")
+write.csv(x = df, file = "02_raw/data/matrix_of_point.csv")
