@@ -37,7 +37,8 @@ df[is.na(df)] <- 0
 df_edited <- df %>%
   filter(df$temp == 1) %>%
   select(-temp)
-colSums(df_edited)
+colSums(df_edited[2:55])
+
 
 ## -----------------------
 # CSV形式でエクスポート

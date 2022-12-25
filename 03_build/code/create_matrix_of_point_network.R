@@ -4,6 +4,7 @@
 ## dataのインポート
 point_data_raw <- read.csv("02_raw/data/dataset_point_network.csv")
 
+
 ## --------------------------------------------------
 ## master datasetの作成
 #ユニークデータのベクトルを作成する
@@ -51,3 +52,4 @@ setdiff(col, row)
 # write.csv(x = df, file = "02_raw/data/matrix_of_point.csv")
 # エクスポートすると「（）」や「 」が正しくエンコーディングされないため、代替的にエクスポートせずに使用する。
 matrix_of_point <- df
+
