@@ -41,5 +41,13 @@ df <- subset(df, point != "None") %>%
   select(-None)
 
 ## --------------------------------------------------
+# 列名と行名が一致しているかチェック
+col <- colnames(df)
+row <- df$point
+setdiff(col, row)
+
+## --------------------------------------------------
 # CSV形式でエクスポート
-write.csv(x = df, file = "02_raw/data/matrix_of_point.csv")
+# write.csv(x = df, file = "02_raw/data/matrix_of_point.csv")
+# エクスポートすると「（）」や「 」が正しくエンコーディングされないため、代替的にエクスポートせずに使用する。
+matrix_of_point <- df
