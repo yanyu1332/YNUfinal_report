@@ -11,9 +11,12 @@ df_of_point <- df_of_point %>%
 # 他ポイントと交換していないデータを削除する (plotをわかりやすくするため)
 df_of_point_have_exchange <- df_of_point[colSums(df_of_point)!=0]
 
-count_exchange <- 5
+count_exchange <- 10
 df_of_point_have_exchange_over_variable <- df_of_point[colSums(df_of_point) >= count_exchange] 
 
 ## -----------------------
 # CSV形式でエクスポート
-write.csv(x = df, file = "02_raw/data/matrix_of_point_edited.csv")
+write.csv(x = df_of_point_have_exchange_over_variable, file = "02_raw/data/matrix_of_point_edited.csv")
+
+
+
