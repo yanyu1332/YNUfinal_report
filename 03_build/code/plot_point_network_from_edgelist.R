@@ -16,10 +16,10 @@ point <- point_data_raw %>%
 graph <- graph_from_data_frame(point, directed = T)
 plot(
   graph,
-  vertex.size = 10, #ノードの大きさ
+  vertex.size = 5, #ノードの大きさ
   vertex.shape="circle", #ノードの形
   vertex.label=V(graph)$name, #ノード属性nameをノードラベルにする。
-  vertex.label.cex=1.5
+  vertex.label.cex=0.5
      )
 
 # ba_graph.pr <- page.rank(graph, directed=TRUE)
