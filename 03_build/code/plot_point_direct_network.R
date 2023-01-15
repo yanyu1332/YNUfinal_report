@@ -1,19 +1,19 @@
 ## --------------------------------------------------
 ## dataのインポート
-point_data_raw <- read.csv("02_raw/data/point_direct.csv",header=T)
-point_data_raw <- point_data_raw %>%
+point_data_direct <- read.csv("02_raw/data/point_direct.csv",header=T)
+point_data_direct <- point_data_direct %>%
   select(-X)
 
 ## --------------------------------------------------
 ## dataの整形
 
-point <- point_data_raw %>%
+point_direct <- point_data_direct %>%
   filter(exchange != "None")
 
 
 ## --------------------------------------------------
 ## plot
-graph_direct <- graph_from_data_frame(point, directed = T)
+graph_direct <- graph_from_data_frame(point_direct, directed = T)
 graph.pr_direct <- page.rank(graph_direct, directed=TRUE)
 png("03_build/output/graph_of_direct_network.png",pointsize = 150,width = 10000, height = 10000)
 plot(
@@ -29,6 +29,8 @@ plot(
   edge.arrow.size = 0.3,
 )
 dev.off() 
+graph_summary(graph_direct)
+
 
 ## plot 現金の影響を除外
 graph.pr_direct$vector["現金"] = 0.00000
@@ -46,3 +48,4 @@ plot(
   edge.arrow.size = 0.3,
 )
 dev.off() 
+

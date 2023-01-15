@@ -13,35 +13,19 @@ point <- point_data_raw %>%
 
 ## --------------------------------------------------
 ## plot
-graph <- graph_from_data_frame(point, directed = T)
-graph.pr <- page.rank(graph, directed=TRUE)
+graph_all <- graph_from_data_frame(point, directed = T)
+graph.pr_all <- page.rank(graph_all, directed=TRUE)
+png("03_build/output/graph_of_all_network.png",pointsize = 50,width = 10000, height = 10000)
 plot(
-  graph,
-  vertex.size = 3, #ノードの大きさ
+  graph_all,
+  vertex.size = graph.pr_all$vector*50, #ノードの大きさ
   vertex.shape="circle", #ノードの形
-  vertex.label=V(graph)$name, #ノード属性nameをノードラベルにする。
-  vertex.label.cex=0.5,
-  vertex.label.color="gray50",
-  vertex.label.font=1,
-  vertex.frame.color="white",
-  edge.color="gray80",
-  layout=layout.fruchterman.reingold
-     )
-
-
-# plot(graph, vertex.size=graph.pr$vector*300, edge.arrow.size=0.2, vertex.color="lightblue", layout=layout.fruchterman.reingold)
-
-# > plot(g,
-#        + vertex.size=15, #ノードの大きさ
-#        + vertex.shape="rectangle", #ノードの形
-#        + vertex.label=V(g)$name, #ノード属性nameをノードラベルにする。
-#        #ノード属性Factionを用いてノードに色づけ
-#        + vertex.color=ifelse(V(g)$Faction==1,"Pink","Lightgreen"),
-#        + vertex.label.color="gray50", #ノードのラベルの色
-#        #ノードのラベルのスタイル 1: 普通, 2: 太字, 3: 斜体, 4: 太字斜体, 5: ギリシャ文字
-#        + vertex.label.font=2,
-#        + vertex.frame.color="white", #ノードの枠の色
-#        + vertex.label.cex=0.8, #ノードラベルの文字サイズ
-#        + edge.width=E(g)$weight, #エッジ属性weightをエッジの太さとする
-#        + edge.color="gray80", #エッジの色
-#        + layout=layout.fruchterman.reingold) #ネットワークのレイアウト手法
+  vertex.color = "gray80",
+  vertex.frame.color = "white",
+  vertex.label=V(graph_all)$name,#ノード属性nameをノードラベルにする。
+  vertex.label.color = "black",
+  vertex.label.cex=0.8,
+  edge.width = 0.1,
+  edge.arrow.size = 0.1,
+)
+dev.off() 
