@@ -32,7 +32,7 @@ dev.off()
 
 ## plot 現金の影響を除外
 graph.pr_indirect$vector["現金"] = 0.00000
-png("03_build/output/graph_of_indirect_network_except_money.png",pointsize = 150,width = 10000, height = 10000)
+png("03_build/output/graph_of_indirect_network_except_money.png",pointsize = 110,width = 10000, height = 10000)
 plot(
   graph_indirect,
   vertex.size = graph.pr_indirect$vector*200, #ノードの大きさ
