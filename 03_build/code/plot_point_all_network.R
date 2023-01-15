@@ -1,6 +1,6 @@
 ## --------------------------------------------------
 ## dataのインポート
-point_data_raw <- read.csv("02_raw/data/point_2nd.csv",header=T)
+point_data_raw <- read.csv("02_raw/data/point_all.csv",header=T)
 point_data_raw <- point_data_raw %>%
   select(-X)
 
@@ -14,16 +14,22 @@ point <- point_data_raw %>%
 ## --------------------------------------------------
 ## plot
 graph <- graph_from_data_frame(point, directed = T)
+graph.pr <- page.rank(graph, directed=TRUE)
 plot(
   graph,
-  vertex.size = 5, #ノードの大きさ
+  vertex.size = 3, #ノードの大きさ
   vertex.shape="circle", #ノードの形
   vertex.label=V(graph)$name, #ノード属性nameをノードラベルにする。
-  vertex.label.cex=0.5
+  vertex.label.cex=0.5,
+  vertex.label.color="gray50",
+  vertex.label.font=1,
+  vertex.frame.color="white",
+  edge.color="gray80",
+  layout=layout.fruchterman.reingold
      )
 
-# ba_graph.pr <- page.rank(graph, directed=TRUE)
-# plot(graph, vertex.size=ba_graph.pr$vector*300, edge.arrow.size=0.2, vertex.color="lightblue", layout=layout.fruchterman.reingold)
+
+# plot(graph, vertex.size=graph.pr$vector*300, edge.arrow.size=0.2, vertex.color="lightblue", layout=layout.fruchterman.reingold)
 
 # > plot(g,
 #        + vertex.size=15, #ノードの大きさ
