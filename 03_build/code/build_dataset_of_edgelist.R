@@ -52,21 +52,25 @@ for (i in 1:length(unique_1st_point)) {
 point_2nd <- point_2nd_raw %>%
   distinct(origin,exchange,.keep_all=TRUE)
 
-unique_list_origin_2nd <- unique(point_2nd$origin) #originのユニークな値を抽出
-unique_list_exchange_2nd <- unique(point_2nd$exchange)　#exchangeのユニークな値を抽出
-unique_list_2nd <- unique(append(unique_list_origin_2nd,unique_list_exchange_2nd)) #両者を連結
-
-point_data_indirect <- point_data_raw %>%　#unique_listに合致するもののみ抽出
-  mutate(
-    orgin_flg = if_else(point_data_raw$origin %in% unique_list_2nd,1,0),
-    exchange_flg = if_else(point_data_raw$exchange %in% unique_list_2nd,1,0),
-    flg = orgin_flg + exchange_flg)
-
-point_data_indirect <- point_data_indirect %>%
-  filter(point_data_indirect$flg == 2) %>%
-  select(origin,exchange) %>%
-  distinct(origin,.keep_all=TRUE)
-
+point_data_indirect <- rbind(point_data_direct,point_2nd) %>%
+  distinct(origin,exchange,.keep_all=TRUE)
+# 
+# unique_list_origin_2nd <- unique(point_2nd$origin) #originのユニークな値を抽出
+# unique_list_exchange_2nd <- unique(point_2nd$exchange)　#exchangeのユニークな値を抽出
+# unique_list_2nd <- unique(append(unique_list_origin_2nd,unique_list_exchange_2nd)) #両者を連結
+# 
+# point_data_indirect <- point_data_raw %>%　#unique_listに合致するもののみ抽出
+#   mutate(
+#     orgin_flg = if_else(point_data_raw$origin %in% unique_list_2nd,1,0),
+#     exchange_flg = if_else(point_data_raw$exchange %in% unique_list_2nd,1,0),
+#     flg = orgin_flg + exchange_flg
+#     )
+# 
+# point_data_indirect <- point_data_indirect %>%
+#   filter(point_data_indirect$flg == 2) %>%
+#   select(origin,exchange) %>%
+#   distinct(origin,.keep_all=TRUE)
+# 
 
 write.csv(x = point_data_indirect, file = "02_raw/data/point_indirect.csv")
 # =====
