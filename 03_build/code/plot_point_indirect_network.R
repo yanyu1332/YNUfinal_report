@@ -29,6 +29,7 @@ plot(
   edge.arrow.size = 0.3,
 )
 dev.off()
+graph_summary(graph_indirect)
 
 ## plot 現金の影響を除外
 graph.pr_indirect$vector["現金"] = 0.00000
@@ -48,3 +49,4 @@ plot(
 dev.off() 
 
 graph_summary(graph_indirect)
+

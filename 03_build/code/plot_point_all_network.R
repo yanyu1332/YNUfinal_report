@@ -1,19 +1,19 @@
 ## --------------------------------------------------
 ## dataのインポート
-point_data_raw <- read.csv("02_raw/data/point_all.csv",header=T)
-point_data_raw <- point_data_raw %>%
+point_data_all <- read.csv("02_raw/data/point_all.csv",header=T)
+point_data_all <- point_data_all %>%
   select(-X)
 
 ## --------------------------------------------------
 ## dataの整形
 
-point <- point_data_raw %>%
+point_all <- point_data_all %>%
   filter(exchange != "None")
 
 
 ## --------------------------------------------------
 ## plot
-graph_all <- graph_from_data_frame(point, directed = T)
+graph_all <- graph_from_data_frame(point_all, directed = T)
 graph.pr_all <- page.rank(graph_all, directed=TRUE)
 png("03_build/output/graph_of_all_network.png",pointsize = 50,width = 10000, height = 10000)
 plot(
@@ -29,3 +29,5 @@ plot(
   edge.arrow.size = 0.1,
 )
 dev.off() 
+
+graph_summary(graph_all)
