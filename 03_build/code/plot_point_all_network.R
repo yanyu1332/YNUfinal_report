@@ -30,4 +30,6 @@ plot(
 )
 dev.off() 
 
-graph_summary(graph_all)
+graph_summary(graph_all,"all")
+
+
