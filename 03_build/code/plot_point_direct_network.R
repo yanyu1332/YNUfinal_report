@@ -29,7 +29,7 @@ plot(
   edge.arrow.size = 0.3,
 )
 dev.off() 
-graph_summary(graph_direct)
+graph_summary(graph_direct,"direct")
 
 
 ## plot 現金の影響を除外

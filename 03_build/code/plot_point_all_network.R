@@ -15,7 +15,7 @@ point_all <- point_data_all %>%
 ## plot
 graph_all <- graph_from_data_frame(point_all, directed = T)
 graph.pr_all <- page.rank(graph_all, directed=TRUE)
-png("03_build/output/graph_of_all_network.png",pointsize = 50,width = 10000, height = 10000)
+png("03_build/output/graph_of_all_network.png",pointsize = 100,width = 10000, height = 10000)
 plot(
   graph_all,
   vertex.size = graph.pr_all$vector*50, #ノードの大きさ
@@ -25,7 +25,7 @@ plot(
   vertex.label=V(graph_all)$name,#ノード属性nameをノードラベルにする。
   vertex.label.color = "black",
   vertex.label.cex=0.8,
-  edge.width = 0.1,
+  edge.width = 0.5,
   edge.arrow.size = 0.1,
 )
 dev.off() 
